@@ -7,6 +7,11 @@ value : InRange a b -> Int
 value (MkInRange x) = x
 
 implementation Num (InRange a b) where
+    (MkInRange x) + (MkInRange y) = case (choose (x + y >= a && x + y <= b)) of
+                                         (Left l) => MkInRange (x+y)
+                                         (Right r) => ?hole
+    x * y = ?hole
+    fromInteger x = ?hole 
 
 x : InRange 1 10
 x = MkInRange 5
@@ -19,4 +24,8 @@ y : InRange 1 10
 y = MkInRange 8
 
 z : InRange 1 10
-z = x + y
+z = MkInRange 3
+
+-- this should not compile
+w : InRange 1 10
+w = x + y

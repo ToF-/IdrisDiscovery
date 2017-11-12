@@ -4,9 +4,14 @@ data InRange : (a : Int) -> (b : Int) -> Type where
     MkInRange : (x : Int) -> { auto inRange : So (x >= a && x <= b) } -> InRange a b
     
 value : InRange a b -> Int
-value (MkInRange x) = ?value_rhs_1
+value (MkInRange x) = x
 
 implementation Num (InRange a b) where
+    (MkInRange x) + (MkInRange y) = case (choose (x + y >= a && x + y <= b)) of
+                                         (Left l) => ?hole_1
+                                         (Right r) => ?hole_2
+    x * y = ?hole
+    fromInteger x = ?hole 
 
 x : InRange 1 10
 x = MkInRange 5
