@@ -4,7 +4,7 @@ data InRange : (a : Int) -> (b : Int) -> Type where
     MkInRange : (x : Int) -> { auto inRange : So (x >= a && x <= b) } -> InRange a b
     
 value : InRange a b -> Int
-value (MkInRange x) = x
+value (MkInRange x) = ?value_rhs_1
 
 implementation Num (InRange a b) where
 
